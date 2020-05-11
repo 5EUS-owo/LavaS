@@ -77,4 +77,6 @@ command /togglephys:
 			stop
 		else if {lavas.toggle} is false:
 			set {lavas.toggle} to true
-			message "&cLava physics enabled."				
+			message "&cLava physics enabled."	
+			
+#JAKE LIKES WILLY
