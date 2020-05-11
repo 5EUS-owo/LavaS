@@ -1,7 +1,7 @@
 # LavaS
  Bringing back lava survival to modern Minecraft
  
- Made with love by 5EUS
+ Made with love by 5EUS <3
  
  Discord: Zεύς#0033
  
