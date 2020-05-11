@@ -19,3 +19,13 @@
  The point of the game was to escape the lava flood. You would have around 5 minutes to build.
  Back then, lava could engulf an entire map due to a quirk with the liquid physics.
  This skript not only brings back the old physics, but also adds in the whole gamemode.
+
+# Prerequisites
+ 
+ - Skript (obviously)
+ - SkQuery (addon for Skript)
+ - Vault (for economy)
+ - WorldGuard (important for regions)
+ - WorldEdit (for WorldGuard to work)
+
+ It's recommended to have lots of RAM as well, many updates are called at once.
