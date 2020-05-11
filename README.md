@@ -5,10 +5,10 @@
  Zεύς#0033 
  Strobilus#6863
  
-#Important note
+# Important note
  This is extremely laggy since it is built entirely on Skript, one day I will bring this to Java.
  
-#What is this?
+# What is this?
  
  Back in around 2010, there was a popular gamemode on classic Minecraft called Lava Survival.
  We're bring it back to modern Minecraft.
