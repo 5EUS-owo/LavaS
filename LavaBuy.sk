@@ -1,0 +1,217 @@
+command /startround:
+	trigger:
+		broadcast "&cThe lava round is starting!"
+		set {dead.%player%} to false
+		set {roundstart} to true
+		wait 1 minute
+		{roundstart}
+		broadcast "&cThe lava will start flowing in 1 minute!"
+		wait 1 minute
+		{roundstart}
+		broadcast "&cThe lava is starting to flow!"
+		set block at location at -247.00, 108, -167.00 in world "world" to lava
+		{roundstart}
+		wait 1 minute
+		broadcast "&cThe round will be over in 5 minutes!"
+		{roundstart}
+		wait 1 minute
+		broadcast "&cThe round will be over in 4 minutes!"
+		{roundstart}
+		wait 1 minute
+		broadcast "&cThe round will be over in 3 minutes!"
+		{roundstart}
+		wait 1 minute
+		broadcast "&cThe round will be over in 2 minutes!"
+		{roundstart}
+		wait 1 minute
+		broadcast "&cThe round will be over in 1 minute!"
+		{roundstart}
+		wait 1 minute
+		broadcast "&cThe lava round has ended."
+		set {roundstart} to false
+		loop all players:
+			if {dead.%loop-player%} is true:
+				message "&cYou died, so you don't get any money."
+				stop
+			else:
+				if "%region at player%" contains "Spawn":
+					message "&cYou stayed in spawn so you don't get any money."
+					stop
+				else:
+					message "You survived!"
+					message "&aYou recieved $5 for surviving the round."
+					add 5 to player's balance
+		wait 10 seconds
+		broadcast "&cMap is reseting, expect some lag!"
+		set {_region} to player's location
+		loop all blocks in region at {_region}:
+			if loop-block is lava:
+				set loop-block to air
+command /clearlava:
+	trigger:
+		set {_region} to player's location
+		loop all blocks in region at {_region}:
+			if loop-block is lava:
+				set loop-block to air
+			
+command /stopround:
+	trigger:
+		broadcast "&cThe lava round has ended."
+		set {roundstart} to false
+
+command /wateroff:
+	trigger:
+		set {waterphysics} to false
+command /wateron:
+	trigger:
+		set {waterphysics} to true
+command /blocks:
+	trigger:
+		set {gui.%player%} to true
+		open chest with 5 rows named "&cBlocks" to player
+		format slot 0 of player with stone with lore "&aFREE" to run "give %player% stone 64"
+		format slot 1 of player with cobblestone with lore "&aFREE" to run "give %player% cobblestone 64"
+		format slot 2 of player with brick block with lore "&aFREE" to run "give %player% bricks 64"
+		format slot 3 of player with dirt with lore "&aFREE" to run "give %player% dirt 64"
+		format slot 4 of player with oak planks with lore "&aFREE" to run "give %player% oak_planks 64"
+		format slot 5 of player with oak log with lore "&aFREE" to run "give %player% oak_log 64"
+		format slot 6 of player with oak leaves with lore "&aFREE" to run "give %player% oak_leaves 64"
+		format slot 7 of player with glass with lore "&aFREE" to run "give %player% glass 64"
+		format slot 8 of player with smooth stone slab with lore "&aFREE" to run "give %player% smooth_stone_slab 64"
+		format slot 9 of player with mossy cobblestone with lore "&aFREE" to run "give %player% mossy_cobblestone 64"
+		format slot 10 of player with oak sapling with lore "&aFREE" to run "give %player% oak_sapling 64"
+		format slot 11 of player with dandelion with lore "&aFREE" to run "give %player% dandelion 64"
+		format slot 12 of player with poppy with lore "&aFREE" to run "give %player% poppy 64"
+		set slot 13 of player's current inventory to brown mushroom with lore "&c$50/5"
+		set slot 14 of player's current inventory to red mushroom with lore "&c$50/5"
+		format slot 15 of player with sand with lore "&aFREE" to run "give %player% sand 64"
+		format slot 16 of player with gravel with lore "&aFREE" to run "give %player% gravel 64"
+		format slot 17 of player with sponge with lore "&aFREE" to run "give %player% sponge 64"
+		
+		
+		format slot 18 of player with red wool with lore "&aFREE" to run "give %player% red_wool 64"
+		format slot 19 of player with orange wool with lore "&aFREE" to run "give %player% orange_wool 64"
+		format slot 20 of player with yellow wool with lore "&aFREE" to run "give %player% yellow_wool 64"
+		format slot 21 of player with lime wool with lore "&aFREE" to run "give %player% lime_wool 64"
+		format slot 22 of player with green wool with lore "&aFREE" to run "give %player% green_wool 64"
+		format slot 23 of player with green concrete with lore "&aFREE" to run "give %player% green_concrete 64"
+		format slot 24 of player with light blue wool with lore "&aFREE" to run "give %player% light_blue_wool 64"
+		format slot 25 of player with cyan wool with lore "&aFREE" to run "give %player% cyan_wool 64"
+		format slot 26 of player with blue wool with lore "&aFREE" to run "give %player% blue_wool 64"
+		format slot 27 of player with purple wool with lore "&aFREE" to run "give %player% purple_wool 64"
+		format slot 28 of player with magenta wool with lore "&aFREE" to run "give %player% magenta_wool 64"
+		format slot 29 of player with pink wool with lore "&aFREE" to run "give %player% pink_wool 64"
+		format slot 30 of player with pink terracotta with lore "&aFREE" to run "give %player% pink_terracotta 64"
+		format slot 31 of player with gray wool with lore "&aFREE" to run "give %player% gray_wool 64"
+		format slot 32 of player with light gray wool with lore "&aFREE" to run "give %player% light_gray_wool 64"
+		format slot 33 of player with white wool with lore "&aFREE" to run "give %player% white_wool 64"
+		format slot 34 of player with coal ore with lore "&aFREE" to run "give %player% coal_ore 64"
+		format slot 35 of player with iron ore with lore "&aFREE" to run "give %player% iron_ore 64"
+		format slot 36 of player with gold ore with lore "&aFREE" to run "give %player% gold_ore 64"
+		format slot 37 of player with iron block with lore "&aFREE" to run "give %player% iron_block 64"
+		format slot 38 of player with gold block with lore "&aFREE" to run "give %player% gold_block 64"
+		set slot 39 of player's current inventory to book shelf with lore "&c$100/5"
+		set slot 40 of player's current inventory to tnt with lore "&c$100/5"
+		set slot 41 of player's current inventory to obsidian with lore "&c$100/5"
+		set slot 42 of player's current inventory to water bucket with lore "&c$100/5"
+		set slot 43 of player's current inventory to lava bucket with lore "&c$1000/5"
+		set slot 44 of player's current inventory to potion of fire resistance with lore "&c$1000"	
+		
+
+on break of tnt:
+	cancel the event
+	set block at event-location to air
+	spawn tnt at event-location
+on block form of obsidian:
+	cancel the event
+on block form of cobblestone:
+	cancel the event	
+on inventory close:
+	{gui.%player%}
+	set {gui.%player%} to false
+on death of player:
+	{roundstart}
+	set {dead.%player%} to true
+	wait 1 tick
+	force player to respawn
+	teleport player to spawn
+on right click with red mushroom:
+	if block above event-block is air:
+		cancel the event
+		set block above event-location to red mushroom
+on right click with brown mushroom:
+	if block above event-block is air:
+		cancel the event
+		set block above event-location to brown mushroom	
+on burn:
+	cancel the event
+on physics: #laggy
+	block is red mushroom or brown mushroom:
+		cancel the event
+on inventory click:
+	{gui.%player%}
+	inventory name of player's current inventory is "&cBlocks":
+		cancel the event
+		if clicked slot is 13:
+			if player's money >= 50:
+				give player 5 brown mushroom
+				remove 50 from player's money
+				message "&c$50 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else if clicked slot is 14:
+			if player's money >= 50:
+				give player 5 red mushroom
+				remove 50 from player's money
+				message "&c$50 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else if clicked slot is 39:
+			if player's money >= 100:
+				give player 5 book shelf
+				remove 100 from player's money
+				message "&c$100 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else if clicked slot is tnt:
+			if player's money >= 100:
+				give player 5 tnt
+				remove 100 from player's money
+				message "&c$100 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else if clicked slot is 41:
+			if player's money >= 100:
+				give player 5 obsidian
+				remove 100 from player's money
+				message "&c$100 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else if clicked slot is 42:
+			if player's money >= 100:
+				give player 5 water bucket
+				remove 100 from player's money
+				message "&c$100 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else if clicked slot is 43:
+			if player's money >= 1000:
+				give player 5 lava bucket
+				remove 1000 from the player's money
+				message "&c$1000 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+		else:
+			if player's money >= 1000:
+				make console execute command "effect give %player% minecraft:fire_resistance 100 1"
+				remove 1000 from player's money
+				message "&c$1000 dollars has been taken from your balance."
+			else:
+				message "&cYou don't have enough money!"
+							
+
+on drop:
+	cancel the event
+on damage:
+	if attacker is a player:
+		cancel the event
