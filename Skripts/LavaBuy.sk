@@ -147,7 +147,11 @@ on join:
 		broadcast "&cLavaS developer &8%player% &chas joined!"
 	else if player's UUID is "cfd04a67-90f3-4fe0-8213-999e873659c2":
 		wait 5 ticks
+		broadcast "&cLavaS developer &8%player% &chas joined!"
+	else if player's UUID is "f9fb298a-6e46-4dc0-aecb-e77e1cb3968a":
+		wait 5 ticks
 		broadcast "&cLavaS developer &8%player% &chas joined!"	
+
 			
 on break of tnt:
 	cancel the event
