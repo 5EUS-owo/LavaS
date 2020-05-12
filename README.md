@@ -27,5 +27,6 @@
  - Vault (for economy)
  - WorldGuard (important for regions)
  - WorldEdit (for WorldGuard to work)
+ - Essentials (it's... essential)
 
  It's recommended to have lots of RAM as well, many updates are called at once.
