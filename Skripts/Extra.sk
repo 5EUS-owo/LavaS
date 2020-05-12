@@ -3,4 +3,4 @@ on craft:
 
 on block damaging:
 	if target block is not bedrock or barrier:
-		set target block to air
+		break target block
