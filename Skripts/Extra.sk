@@ -6,5 +6,6 @@ on block damaging:
 		break target block
 
 on inventory open:
-	if inventory name of player's current inventory is not "&cBlocks" or "Chest" or "Large Chest":
+	if inventory name of player's current inventory is not "&cBlocks":
+		close player's current inventory
 		make player execute command "/blocks"		
