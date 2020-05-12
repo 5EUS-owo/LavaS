@@ -23,29 +23,36 @@ function lavaPhysics(block: block):
 			else if loop-block is glass:
 				wait 10 seconds
 				set loop-block to air
+				exit loop 
 			#general blocks
 			else if loop-block is stone or cobblestone or brick block or dirt or oak planks or oak log or oak leaves or smooth stone slab or mossy cobblestone:
 				wait 1 minute
 				set loop-block to coal ore	
 				wait 1 minute
 				set loop-block to air
+				exit loop 
 			else if loop-block is oak sapling or dandelion or poppy or gravel:
 				wait 30 seconds
 				set loop-block to air
+				exit loop 
 			else if loop-block is wool or concrete or terracotta:
 				wait 10 seconds
 				set loop-block to air
+				exit loop 
 			else if loop-block is coal ore or iron ore or gold ore:
 				wait 1 minute
 				set loop-block to air
+				exit loop 
 			else if loop-block is iron block or gold block or obsidian:
 				wait for 2 minutes
 				set loop-block to coal ore	
 				wait 1 minute
 				set loop-block to air
+				exit loop 
 			else if loop-block is tnt:
 				set loop-block to air
 				spawn tnt at location of loop-block
+				exit loop 
 			else:
 				set loop-block to lava
 function waterPhys(block: block):			
