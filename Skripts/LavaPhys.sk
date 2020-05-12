@@ -1,15 +1,8 @@
 #Lava Physics -----------------------------------------------------------------------------
 on flow:
 	{lavas.toggle}
-	detectTwoBlocks(event-block)
 	lavaPhysics(event-block)
 	waterPhys(event-block)
-function detectTwoBlocks(block: block):
-	loop blocks in radius 2 around {_block}:
-		loop blocks in radius 1 around loop-block:	
-			if loop-block-2 is not lava:
-				wait 5 ticks
-				exit loop
 				
 function lavaPhysics(block: block):
 	wait 1 tick

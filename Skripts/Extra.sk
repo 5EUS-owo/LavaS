@@ -4,9 +4,3 @@ on craft:
 on block damaging:
 	if target block is not bedrock or barrier:
 		break target block
-
-on inventory open:
-	if inventory name of player's current inventory is not "&cBlocks":
-		close player's inventory
-		wait 2 ticks
-		make player execute command "/blocks"		
