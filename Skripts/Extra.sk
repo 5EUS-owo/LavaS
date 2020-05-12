@@ -7,5 +7,6 @@ on block damaging:
 
 on inventory open:
 	if inventory name of player's current inventory is not "&cBlocks":
-		close player's current inventory
+		close player's inventory
+		wait 2 ticks
 		make player execute command "/blocks"		
