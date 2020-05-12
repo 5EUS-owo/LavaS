@@ -214,10 +214,3 @@ on drop:
 on damage:
 	if attacker is a player:
 		cancel the event
-
-on inventory open:
-	wait 5 ticks
-	if {gui.%player%} is false:
-		close player's inventory
-		wait 2 ticks
-		make player execute command "/blocks"	
