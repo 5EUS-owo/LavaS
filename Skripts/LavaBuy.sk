@@ -9,7 +9,7 @@ command /startround:
 		wait 1 minute
 		{roundstart}
 		broadcast "&cThe lava is starting to flow!"
-		set block at location at -247.00, 108, -167.00 in world "world" to lava
+		set block at location at -54, 200, 213 in world "LavaSurvival" to lava
 		{roundstart}
 		wait 1 minute
 		broadcast "&cThe round will be over in 5 minutes!"
