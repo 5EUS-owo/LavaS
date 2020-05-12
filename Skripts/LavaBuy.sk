@@ -1,15 +1,35 @@
+
+on block place:
+	{roundstart}
+	add 1 to {%player%.score}
+
+on block break:
+	{roundstart}
+	subtract 1 from {%player%.score}
+
 command /startround:
 	trigger:
 		broadcast "&cThe lava round is starting!"
-		set {dead.%player%} to false
 		set {roundstart} to true
+		wait 1 minute
+		{roundstart}
+		broadcast "&cThe lava will start flowing in 5 minutes!"
+		wait 1 minute
+		{roundstart}
+		broadcast "&cThe lava will start flowing in 4 minutes!"
+		wait 1 minute
+		{roundstart}
+		broadcast "&cThe lava will start flowing in 3 minutes!"
+		wait 1 minute
+		{roundstart}
+		broadcast "&cThe lava will start flowing in 2 minutes!"
 		wait 1 minute
 		{roundstart}
 		broadcast "&cThe lava will start flowing in 1 minute!"
 		wait 1 minute
 		{roundstart}
 		broadcast "&cThe lava is starting to flow!"
-		set block at location at -54, 200, 213 in world "LavaSurvival" to lava
+		set block at location at -54, 125, 213 in world "LavaSurvival" to lava
 		{roundstart}
 		wait 1 minute
 		broadcast "&cThe round will be over in 5 minutes!"
@@ -31,29 +51,27 @@ command /startround:
 		set {roundstart} to false
 		loop all players:
 			if {dead.%loop-player%} is true:
-				message "&cYou died, so you don't get any money."
+				send "&cYou died, so you don't get any money." to loop-player
 				stop
+			else if player's y coordinate >= 35:
+				send "You are below y-level 35, so you don't get any money."
 			else:
-				if "%region at player%" contains "Spawn":
-					message "&cYou stayed in spawn so you don't get any money."
-					stop
-				else:
-					message "You survived!"
-					message "&aYou recieved $5 for surviving the round."
-					add 5 to player's balance
-		wait 10 seconds
+#			if "%region at loop-player%" contains "Spawn":
+#				send "&cYou stayed in spawn so you don't get any money." to loop-player
+#				stop
+			send "You survived!" to loop-player
+			set {_r} to {%loop-player%.score} * 0.1
+			add {_r} to loop-player's balance
+			send "&a%{_r}% has been added to your balance!" to loop-player	
+
+			wait 10 seconds
+		loop all players:
+			set {dead.%loop-player%} to false
+			set {%loop-player%.score} to 0
 		broadcast "&cMap is reseting, expect some lag!"
-		set {_region} to player's location
-		loop all blocks in region at {_region}:
-			if loop-block is lava:
-				set loop-block to air
-command /clearlava:
-	trigger:
-		set {_region} to player's location
-		loop all blocks in region at {_region}:
-			if loop-block is lava:
-				set loop-block to air
-			
+
+		#clone command	
+
 command /stopround:
 	trigger:
 		broadcast "&cThe lava round has ended."
@@ -150,10 +168,12 @@ on death of player:
 on right click with red mushroom:
 	if block above event-block is air:
 		cancel the event
+		remove 1 red mushroom from player's inventory
 		set block above event-location to red mushroom
 on right click with brown mushroom:
 	if block above event-block is air:
 		cancel the event
+		remove 1 brown mushroom from player's inventory
 		set block above event-location to brown mushroom	
 on burn:
 	cancel the event
