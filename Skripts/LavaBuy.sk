@@ -61,7 +61,7 @@ command /startround:
 #				send "&cYou stayed in spawn so you don't get any money." to loop-player
 #				stop
 			send "You survived!" to loop-player
-			set {_r} to {%loop-player%.score} * 0.1
+			set {_r} to {%loop-player%.score} * 0.01
 			add {_r} to loop-player's balance
 			send "&a%{_r}% has been added to your balance!" to loop-player	
 
