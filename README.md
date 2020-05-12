@@ -11,6 +11,7 @@
  
 # Important note
  This is extremely laggy since it is built entirely on Skript, one day I will bring this to Java.
+ Also, due to lava having lighting now, the lighting updates cause massive lag for clients.
  
 # What is this?
  
