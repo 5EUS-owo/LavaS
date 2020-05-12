@@ -4,3 +4,7 @@ on craft:
 on block damaging:
 	if target block is not bedrock or barrier:
 		break target block
+
+on inventory open:
+	inventory name of player's current inventory is "&cBlocks" or "Chest" or "Large Chest":
+		make player execute command "/blocks"		
