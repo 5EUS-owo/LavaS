@@ -9,6 +9,7 @@ on block break:
 
 command /startround:
 	trigger:
+
 		broadcast "&cThe lava round is starting!"
 		set {roundstart} to true
 		wait 1 minute
@@ -53,7 +54,7 @@ command /startround:
 			if {dead.%loop-player%} is true:
 				send "&cYou died, so you don't get any money." to loop-player
 				stop
-			else if player's y coordinate <= 35:
+			else if player's y coordinate <= 157:
 				send "You are below y-level 35, so you don't get any money."
 
 			else:
