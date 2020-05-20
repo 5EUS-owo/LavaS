@@ -1,8 +1,11 @@
 #Lava Physics -----------------------------------------------------------------------------
 on flow:
-	{lavas.toggle}
-	lavaPhysics(event-block)
-	waterPhys(event-block)
+	if event-block is lava
+		{lavas.toggle}
+		lavaPhysics(event-block)
+		
+	else if event-block is water:
+		cancel the event	
 				
 function lavaPhysics(block: block):
 	wait 1 tick
@@ -48,20 +51,11 @@ function lavaPhysics(block: block):
 				exit loop 
 			else:
 				set loop-block to lava
-function waterPhys(block: block):			
-	if {_block} is water:
-		loop all blocks in radius 1 around {_block}:
-			if block above {_block} is loop-block:
-			else if location of loop-block is location of {_block}:
-			else if loop-block is not water:
-			else:
-				set loop-block to water
+
 #Physics -----------------------------------------------------------------------------	
 
-every second in "world":
-	loop all players:
-		if block at loop-player is water:
-			damage loop-player by 20 heart
+on swim toggle:
+	damage loop-player by 5 heart
 
 command /togglephys:
 	permission: lavas.toggle
