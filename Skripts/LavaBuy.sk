@@ -1,90 +1,3 @@
-
-on block place:
-	{roundstart}
-	add 1 to {%player%.score}
-
-on block break:
-	{roundstart}
-	subtract 1 from {%player%.score}
-
-command /startround:
-	trigger:
-
-		broadcast "&cThe lava round is starting!"
-		set {roundstart} to true
-		wait 1 minute
-		{roundstart}
-		broadcast "&cThe lava will start flowing in 5 minutes!"
-		wait 1 minute
-		{roundstart}
-		broadcast "&cThe lava will start flowing in 4 minutes!"
-		wait 1 minute
-		{roundstart}
-		broadcast "&cThe lava will start flowing in 3 minutes!"
-		wait 1 minute
-		{roundstart}
-		broadcast "&cThe lava will start flowing in 2 minutes!"
-		wait 1 minute
-		{roundstart}
-		broadcast "&cThe lava will start flowing in 1 minute!"
-		wait 1 minute
-		{roundstart}
-		broadcast "&cThe lava is starting to flow!"
-		set block at location at -54, 256, 213 in world "LavaSurvival" to lava
-		{roundstart}
-		wait 1 minute
-		broadcast "&cThe round will be over in 5 minutes!"
-		{roundstart}
-		wait 1 minute
-		broadcast "&cThe round will be over in 4 minutes!"
-		{roundstart}
-		wait 1 minute
-		broadcast "&cThe round will be over in 3 minutes!"
-		{roundstart}
-		wait 1 minute
-		broadcast "&cThe round will be over in 2 minutes!"
-		{roundstart}
-		wait 1 minute
-		broadcast "&cThe round will be over in 1 minute!"
-		{roundstart}
-		wait 1 minute
-		broadcast "&cThe lava round has ended."
-		set {roundstart} to false
-		loop all players:
-			if {dead.%loop-player%} is true:
-				send "&cYou died, so you don't get any money." to loop-player
-				stop
-			else if player's y coordinate <= 157:
-				send "You are below y-level 35, so you don't get any money."
-
-			else:
-#			if "%region at loop-player%" contains "Spawn":
-#				send "&cYou stayed in spawn so you don't get any money." to loop-player
-#				stop
-			send "You survived!" to loop-player
-			set {_r} to {%loop-player%.score} * 0.01
-			add {_r} to loop-player's balance
-			send "&a%{_r}% has been added to your balance!" to loop-player	
-
-			wait 10 seconds
-		loop all players:
-			set {dead.%loop-player%} to false
-			set {%loop-player%.score} to 0
-		broadcast "&cMap is reseting, expect some lag!"
-
-		#clone command	
-
-command /stopround:
-	trigger:
-		broadcast "&cThe lava round has ended."
-		set {roundstart} to false
-
-command /wateroff:
-	trigger:
-		set {waterphysics} to false
-command /wateron:
-	trigger:
-		set {waterphysics} to true
 command /blocks:
 	trigger:
 		set {gui.%player%} to true
@@ -136,56 +49,11 @@ command /blocks:
 		set slot 42 of player's current inventory to water bucket with lore "&c$100/5"
 		set slot 43 of player's current inventory to lava bucket with lore "&c$1000/5"
 		set slot 44 of player's current inventory to potion of fire resistance with lore "&c$1000"	
-on join:
-	if player's UUID is "7622daf6-df99-4d01-88a9-6717461c64ed":
-		wait 5 ticks
-		broadcast "&cLavaS developer &8%player% &chas joined!"
-	else if player's UUID is "a5fb3a0f-403c-4f20-96e6-cf6b39ec604b":
-		wait 5 ticks
-		broadcast "&cLavaS developer &8%player% &chas joined!"
-	else if player's UUID is "79366740-0a38-4b1f-b5c1-0d27e0eff204":
-		wait 5 ticks
-		broadcast "&cLavaS developer &8%player% &chas joined!"
-	else if player's UUID is "cfd04a67-90f3-4fe0-8213-999e873659c2":
-		wait 5 ticks
-		broadcast "&cLavaS developer &8%player% &chas joined!"
-	else if player's UUID is "f9fb298a-6e46-4dc0-aecb-e77e1cb3968a":
-		wait 5 ticks
-		broadcast "&cLavaS developer &8%player% &chas joined!"	
-
 			
-on break of tnt:
-	cancel the event
-	set block at event-location to air
-	spawn tnt at event-location
-on block form of obsidian:
-	cancel the event
-on block form of cobblestone:
-	cancel the event	
 on inventory close:
 	{gui.%player%}
 	set {gui.%player%} to false
-on death of player:
-	{roundstart}
-	set {dead.%player%} to true
-	wait 1 tick
-	force player to respawn
-	teleport player to spawn
-on right click with red mushroom:
-	if block above event-block is air:
-		cancel the event
-		remove 1 red mushroom from player's inventory
-		set block above event-location to red mushroom
-on right click with brown mushroom:
-	if block above event-block is air:
-		cancel the event
-		remove 1 brown mushroom from player's inventory
-		set block above event-location to brown mushroom	
-on burn:
-	cancel the event
-on physics: #laggy
-	block is red mushroom or brown mushroom:
-		cancel the event
+
 on inventory click:
 	{gui.%player%}
 	inventory name of player's current inventory is "&cBlocks":
@@ -247,8 +115,3 @@ on inventory click:
 			else:
 				message "&cYou don't have enough money!"
 							
-on drop:
-	cancel the event
-on damage:
-	if attacker is a player:
-		cancel the event
