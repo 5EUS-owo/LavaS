@@ -1,9 +1,9 @@
 #Lava Physics -----------------------------------------------------------------------------
 on flow:
-	if event-block is lava
+	if event-block is lava:
 		{lavas.toggle}
 		lavaPhysics(event-block)
-		
+
 	else if event-block is water:
 		cancel the event	
 				
