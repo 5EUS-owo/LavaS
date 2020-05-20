@@ -55,7 +55,7 @@ function lavaPhysics(block: block):
 #Physics -----------------------------------------------------------------------------	
 
 on swim toggle:
-	damage loop-player by 5 heart
+	damage player by 5 heart
 
 command /togglephys:
 	permission: lavas.toggle
