@@ -4,3 +4,63 @@ on craft:
 on block damaging:
 	if target block is not bedrock or barrier:
 		break target block
+
+on join:
+	if player's UUID is "7622daf6-df99-4d01-88a9-6717461c64ed":
+		wait 5 ticks
+		broadcast "&cLavaS developer &8%player% &chas joined!"
+	else if player's UUID is "a5fb3a0f-403c-4f20-96e6-cf6b39ec604b":
+		wait 5 ticks
+		broadcast "&cLavaS developer &8%player% &chas joined!"
+	else if player's UUID is "79366740-0a38-4b1f-b5c1-0d27e0eff204":
+		wait 5 ticks
+		broadcast "&cLavaS developer &8%player% &chas joined!"
+	else if player's UUID is "cfd04a67-90f3-4fe0-8213-999e873659c2":
+		wait 5 ticks
+		broadcast "&cLavaS developer &8%player% &chas joined!"
+	else if player's UUID is "f9fb298a-6e46-4dc0-aecb-e77e1cb3968a":
+		wait 5 ticks
+		broadcast "&cLavaS developer &8%player% &chas joined!"		
+
+on break of tnt:
+	cancel the event
+	set block at event-location to air
+	spawn tnt at event-location
+
+on block form of obsidian:
+	cancel the event
+
+on block form of cobblestone:
+	cancel the event	
+
+on right click with red mushroom:
+	if block above event-block is air:
+		cancel the event
+		remove 1 red mushroom from player's inventory
+		set block above event-location to red mushroom
+
+on right click with brown mushroom:
+	if block above event-block is air:
+		cancel the event
+		remove 1 brown mushroom from player's inventory
+		set block above event-location to brown mushroom	
+
+on burn:
+	cancel the event
+on physics: #laggy
+	block is red mushroom or brown mushroom:
+		cancel the event
+
+on death of player:
+	{roundstart}
+	set {dead.%player%} to true
+	wait 1 tick
+	force player to respawn
+	teleport player to spawn	
+
+on drop:
+	cancel the event
+	
+on damage:
+	if attacker is a player:
+		cancel the event		
